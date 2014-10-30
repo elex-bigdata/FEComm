@@ -41,7 +41,7 @@ public class QueryUtils {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String  a = "@throws NullPointerException if <code>target</code> or　ｈｅｌｌｏ　        <code>replacement</code>；。，０　ｏｏｉｐ is <code>null</code>.";
+		String  a = "@throws NullPointerException, i,f <code>target</code> or　ｈｅｌｌｏ　        <code>replacement</code>；。，０　ｏｏｉｐ is <code>null</code>.";
 		System.out.println(normalize(a));
 
 	}

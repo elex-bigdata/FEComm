@@ -110,6 +110,22 @@ public class TimeUtils {
 		
 	}
 	
+	public static String[] getTimeDimension(String[] args) throws ParseException{
+		if(args.length==2){
+			if(args[0]!=null && args[1]!=null){
+				Date day = TimeUtils.getTimeByNation(args);
+				String[] timeDim = new String[3];
+				timeDim[0] = TimeUtils.getHour(day);
+				timeDim[1] = TimeUtils.getDayPart(day);
+				timeDim[2] = TimeUtils.isWorkOrVacation(day);
+				return timeDim;
+			}
+			return null;
+		}
+		return null;
+		
+	}
+	
 	public static String getHour(Date day){
 		ca.setTime(day);
 		return  Integer.toString(ca.get(Calendar.HOUR_OF_DAY));

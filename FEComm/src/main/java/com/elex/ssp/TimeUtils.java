@@ -15,13 +15,13 @@ public class TimeUtils {
 	private static Map<String,Zone> timeZone = new HashMap<String,Zone>();
 	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private static Calendar ca = Calendar.getInstance();
-	private static final String DAWN="dawn";
-	private static final String FORENOON="foreNoon";
-	private static final String NOON="noon";
-	private static final String AFTERNOON="afterNoon";
-	private static final String EVENING="evening";
-	private static final String WORKING="workDay";
-	private static final String VACATION="restDay";
+	public static final String DAWN="dawn";
+	public static final String FORENOON="foreNoon";
+	public static final String NOON="noon";
+	public static final String AFTERNOON="afterNoon";
+	public static final String EVENING="evening";
+	public static final String WORKING="workDay";
+	public static final String VACATION="restDay";
 	
 	static{
 		try {
@@ -42,6 +42,10 @@ public class TimeUtils {
 		
 		String[] myArgs = {sdf.format(now),"qa"};
 		System.out.println(isWorkOrVacation(now));
+		
+		for(String t:getTimeDimension(myArgs)){
+			System.out.println(t);
+		}
 
 	}
 	

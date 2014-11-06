@@ -84,9 +84,8 @@ public class TimeUtils {
 
 	}
 	
-	public static Date getTimeByNation(String[] args) throws ParseException{
-		Date origDay = sdf.parse(args[0]);		
-		Zone zone = timeZone.get(args[1]);
+	private static Date getTimeByNation(Date origDay, String nation) throws ParseException{
+        Zone zone = timeZone.get(nation);
 		if(zone == null){
 			return origDay;
 		}else{
@@ -109,6 +108,11 @@ public class TimeUtils {
 		}
 		
 	}
+
+    public static Date getTimeByNation(String[] args) throws ParseException{
+        Date origDay = sdf.parse(args[0]);
+        return getTimeByNation(origDay, args[1]);
+    }
 	
 	public static String[] getTimeDimension(String[] args) throws ParseException{
 		if(args.length==2){
@@ -125,6 +129,18 @@ public class TimeUtils {
 		return null;
 		
 	}
+
+    public static String[] getTimeDimension(Date origDay, String nation) throws ParseException{
+        if(origDay!=null && nation!=null){
+            Date day = TimeUtils.getTimeByNation(origDay, nation);
+            String[] timeDim = new String[3];
+            timeDim[0] = TimeUtils.getHour(day);
+            timeDim[1] = TimeUtils.getDayPart(day);
+            timeDim[2] = TimeUtils.isWorkOrVacation(day);
+            return timeDim;
+        }
+        return null;
+    }
 	
 	public static String getHour(Date day){
 		ca.setTime(day);

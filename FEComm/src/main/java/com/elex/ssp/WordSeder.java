@@ -44,7 +44,7 @@ public class WordSeder {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		String a = " If this thread is different from the current thread (that is, the current thread is trying to stop a thread other than itself)";
+		String a = "df koij 90k www.abc.net";
 		List<String> result = WordSeder.sed(a);
 		for(String b : result){
 			System.out.println(b);

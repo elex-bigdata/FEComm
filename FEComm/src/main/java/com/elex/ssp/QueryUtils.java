@@ -49,7 +49,7 @@ public class QueryUtils {
 	public static String normalize(String query){
 		if(query != null){
 			if(!query.trim().equals("")){
-				return qj2bj(query.trim().toLowerCase()).replaceAll("[\\pP|\\[|\\]|\\<|\\>|\\(|\\)|\\{|\\}|\\|\\/]", " ").replaceAll("[' ']+", " ");
+				return qj2bj(query.trim().toLowerCase()).replaceAll("[\\pP|\\[|\\]|\\<|\\>|\\(|\\)|\\{|\\}|\\|\\/|\\+|\\-|\\*|\\=]", " ").replaceAll("[' ']+", " ");
 			}else{
 				return null;
 			}

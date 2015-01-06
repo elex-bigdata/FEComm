@@ -40,13 +40,14 @@ public class TimeUtils {
 	public static void main(String[] args) throws ParseException {
 		Date now = new Date();
 		
-		String[] myArgs = {sdf.format(now),"qa"};
+		String[] myArgs = {sdf.format(now),"br"};
 		System.out.println(isWorkOrVacation(now));
 		
 		for(String t:getTimeDimension(myArgs)){
 			System.out.println(t);
 		}
 
+		
 	}
 	
 	private static void loadTimeZone() throws IOException{

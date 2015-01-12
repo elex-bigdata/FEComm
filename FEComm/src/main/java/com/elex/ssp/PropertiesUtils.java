@@ -11,6 +11,8 @@ public class PropertiesUtils {
 
 	private static Properties pop = new Properties();
 	private static Map<String,Integer> dayPartConditonMap = new HashMap<String,Integer>();
+	private static String[] pbids;
+	private static String[] pbTags;
 	static{
 		InputStream is = null;
 		try{
@@ -51,6 +53,14 @@ public class PropertiesUtils {
 
 	public static Map<String, Integer> getDayPartConditonMap() {
 		return dayPartConditonMap;
+	}
+	
+	public static String[] getPbIDs(){
+		return pop.getProperty("pbids").split(",");
+	}
+	
+	public static String[] getPbTags(){
+		return pop.getProperty("pbtags").split(",");
 	}
 	
 	

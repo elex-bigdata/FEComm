@@ -39,14 +39,16 @@ public class TimeUtils {
 	 * @throws ParseException 
 	 */
 	public static void main(String[] args) throws ParseException {
-		Date now = new Date();
+		//Date now = new Date();
 		
-		/*String[] myArgs = {TimeStamp.t,"zh"};
-		System.out.println(isWorkOrVacation(now));
+		String[] myArgs = {"2015-01-25 01:20:03",null};
+		//System.out.println(isWorkOrVacation(now));
+		if(getTimeDimension(myArgs) !=null){
+			for(String t:getTimeDimension(myArgs)){
+				System.out.println(t);
+			}
+		}
 		
-		for(String t:getTimeDimension(myArgs)){
-			System.out.println(t);
-		}*/
 
 		
 	}
@@ -90,7 +92,7 @@ public class TimeUtils {
 
 	}
 	
-	private static Date getTimeByNation(Date origDay, String nation) throws ParseException{
+	private static Date getTimeByNation(Date origDay, String nation){
         Zone zone = timeZone.get(nation);
 		if(zone == null){
 			return origDay;
@@ -115,12 +117,12 @@ public class TimeUtils {
 		
 	}
 
-    public static Date getTimeByNation(String[] args) throws ParseException{
+    public static Date getTimeByNation(String[] args){
         Date origDay = Timestamp.valueOf(args[0]);
         return getTimeByNation(origDay, args[1]);
     }
 	
-	public static String[] getTimeDimension(String[] args) throws ParseException{
+	public static String[] getTimeDimension(String[] args){
 		if(args.length==2){
 			if(args[0]!=null && args[1]!=null){
 				Date day = TimeUtils.getTimeByNation(args);

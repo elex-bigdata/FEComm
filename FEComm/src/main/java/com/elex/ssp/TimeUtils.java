@@ -3,8 +3,9 @@ package com.elex.ssp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Timestamp;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+//import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -13,7 +14,7 @@ import java.util.Map;
 public class TimeUtils {
 	
 	private static Map<String,Zone> timeZone = new HashMap<String,Zone>();
-	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	//private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private static Calendar ca = Calendar.getInstance();
 	public static final String DAWN="dawn";
 	public static final String FORENOON="foreNoon";
@@ -40,12 +41,12 @@ public class TimeUtils {
 	public static void main(String[] args) throws ParseException {
 		Date now = new Date();
 		
-		String[] myArgs = {sdf.format(now),"br"};
+		/*String[] myArgs = {TimeStamp.t,"zh"};
 		System.out.println(isWorkOrVacation(now));
 		
 		for(String t:getTimeDimension(myArgs)){
 			System.out.println(t);
-		}
+		}*/
 
 		
 	}
@@ -115,7 +116,7 @@ public class TimeUtils {
 	}
 
     public static Date getTimeByNation(String[] args) throws ParseException{
-        Date origDay = sdf.parse(args[0]);
+        Date origDay = Timestamp.valueOf(args[0]);
         return getTimeByNation(origDay, args[1]);
     }
 	

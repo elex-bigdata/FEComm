@@ -26,11 +26,22 @@ public class ElexAnalyzer extends Analyzer{
 		
 		//StopAnalyzer加载自定义停用词表
 		Set<String> stop = new HashSet<String>();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream("stopwords.txt")));
-		String stopWord = "";
-		while ((stopWord = reader.readLine()) != null) {
-			stop.add(stopWord.trim().toLowerCase());			
+		//不可以在一个analyzer里加载所有语种的停用词，因为对于欧洲语系而言，某种语言的某个停用词在另一种语言里却是有用的。
+		/*String[] stopFiles = new String[]{"arabic.txt","catalan.txt","danish.txt",
+				"dutch.txt","english.txt","french.txt","german.txt","hungarian.txt",
+				"italian.txt","norwegian.txt","portuguese.txt","romanian.txt",
+				"russian.txt","spanish.txt","swedish.txt","swedish.txt"};*/
+		
+		String[] stopFiles = new String[]{"arabic.txt","english.txt","portuguese.txt","russian.txt",};
+		BufferedReader reader = null;
+		for (String file : stopFiles) {
+			reader = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream("profile/"+file),"UTF-8"));
+			String stopWord = "";
+			while ((stopWord = reader.readLine()) != null) {
+				stop.add(stopWord.trim().toLowerCase());			
+			}
 		}
+		
 		reader.close();		
 		analyzer = new StopAnalyzer(Version.LUCENE_36, stop);
 				
@@ -69,7 +80,10 @@ public class ElexAnalyzer extends Analyzer{
 	    TokenStream ts = analyzer.tokenStream(null, reader);
 		CharTermAttribute term=ts.getAttribute(CharTermAttribute.class);
 		while(ts.incrementToken()){
-			result.add(term.toString());
+			if(!term.toString().matches("["+term.toString().substring(0, 1)+"]*") && term.toString().length()>2){
+				result.add(term.toString());
+			}
+			
 		}
 	    return result;
 	  }

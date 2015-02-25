@@ -44,8 +44,7 @@ public class WordSeder {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		String a = "df koij 90k www.abc.net";
-		List<String> result = WordSeder.sed(a);
+		List<String> result = WordSeder.sed(args[0]);
 		for(String b : result){
 			System.out.println(b);
 		}

@@ -94,15 +94,18 @@
 					<artifactId>jdk.tools</artifactId>
 					<groupId>jdk.tools</groupId>
 				</exclusion>
+				<!-- 以下两个包用在web项目中会导致包冲突 -->
+				<exclusion>
+					<groupId>javax.servlet.jsp</groupId>
+					<artifactId>jsp-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+					<version>2.5</version>
+				</exclusion>
 			</exclusions>
 		</dependency>
-
-		<dependency>
-			<groupId>com.whalin</groupId>
-			<artifactId>Memcached-Java-Client</artifactId>
-			<version>3.0.2</version>
-		</dependency>
-
 
 	</dependencies>
 </project>

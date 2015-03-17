@@ -16,6 +16,7 @@ import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.util.Version;
 
 
+
 public class ElexAnalyzer extends Analyzer{
 
 	private volatile boolean initialized = false;
@@ -27,12 +28,12 @@ public class ElexAnalyzer extends Analyzer{
 		//StopAnalyzer加载自定义停用词表
 		Set<String> stop = new HashSet<String>();
 		//不可以在一个analyzer里加载所有语种的停用词，因为对于欧洲语系而言，某种语言的某个停用词在另一种语言里却是有用的。
-		/*String[] stopFiles = new String[]{"arabic.txt","catalan.txt","danish.txt",
+		String[] stopFiles = new String[]{"arabic.txt","catalan.txt","danish.txt",
 				"dutch.txt","english.txt","french.txt","german.txt","hungarian.txt",
 				"italian.txt","norwegian.txt","portuguese.txt","romanian.txt",
-				"russian.txt","spanish.txt","swedish.txt","swedish.txt"};*/
+				"russian.txt","spanish.txt","swedish.txt","swedish.txt"};
 		
-		String[] stopFiles = new String[]{"arabic.txt","english.txt","portuguese.txt","russian.txt",};
+		//String[] stopFiles = new String[]{"arabic.txt","english.txt","portuguese.txt","russian.txt",};
 		BufferedReader reader = null;
 		for (String file : stopFiles) {
 			reader = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream("profile/"+file),"UTF-8"));

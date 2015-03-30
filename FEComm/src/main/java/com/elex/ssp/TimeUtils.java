@@ -16,11 +16,13 @@ public class TimeUtils {
 	private static Map<String,Zone> timeZone = new HashMap<String,Zone>();
 	//private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private static Calendar ca = Calendar.getInstance();
-	public static final String DAWN="dawn";
-	public static final String FORENOON="foreNoon";
-	public static final String NOON="noon";
-	public static final String AFTERNOON="afterNoon";
-	public static final String EVENING="evening";
+	public static final String DAWN="dawn";//凌晨
+	public static final String MORNING="morning";//早上
+	public static final String FORENOON="foreNoon";//上午
+	public static final String NOON="noon";//中午
+	public static final String AFTERNOON="afterNoon";//下午
+	public static final String EVENING="evening";//晚上
+	public static final String MIDNIGHT="midnight";//午夜
 	public static final String WORKING="workDay";
 	public static final String VACATION="restDay";
 	
@@ -41,7 +43,7 @@ public class TimeUtils {
 	public static void main(String[] args) throws ParseException {
 		//Date now = new Date();
 		
-		String[] myArgs = {"2015-01-25 01:20:03",null};
+		String[] myArgs = {"2015-01-25 19:20:03","zh"};
 		//System.out.println(isWorkOrVacation(now));
 		if(getTimeDimension(myArgs) !=null){
 			for(String t:getTimeDimension(myArgs)){
@@ -76,8 +78,12 @@ public class TimeUtils {
 		ca.setTime(day);
 		int hour = ca.get(Calendar.HOUR_OF_DAY);
 		Map<String,Integer> con =  PropertiesUtils.getDayPartConditonMap();
-		if(hour >= con.get("db") && hour <con.get("de")){
+		if(hour >= con.get("mnb") && hour <con.get("mne")){
+			return MIDNIGHT;
+		}else if(hour >= con.get("db") && hour <con.get("de")){
 			return DAWN;
+		}else if(hour >= con.get("mb") && hour <con.get("me")){
+			return MORNING;
 		}else if(hour >= con.get("fnb") && hour <con.get("fne")){
 			return FORENOON;
 		}else if(hour >= con.get("nb") && hour <con.get("ne")){

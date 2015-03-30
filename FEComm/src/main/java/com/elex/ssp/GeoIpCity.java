@@ -1,6 +1,5 @@
 package com.elex.ssp;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -26,8 +25,7 @@ public class GeoIpCity {
 	static{
 		
 		try {
-			File database = new File(Thread.currentThread().getContextClassLoader().getResource("GeoIP2-City.mmdb").getPath());
-			reader = new DatabaseReader.Builder(database).build();
+			reader = new DatabaseReader.Builder(GeoIpCity.class.getClassLoader().getResourceAsStream("GeoIP2-City.mmdb")).build();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

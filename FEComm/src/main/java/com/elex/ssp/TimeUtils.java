@@ -43,7 +43,7 @@ public class TimeUtils {
 	public static void main(String[] args) throws ParseException {
 		//Date now = new Date();
 		
-		String[] myArgs = {"2015-01-25 19:20:03","zh"};
+		String[] myArgs = {"2015-03-15 05:54:44","br"};
 		//System.out.println(isWorkOrVacation(now));
 		if(getTimeDimension(myArgs) !=null){
 			for(String t:getTimeDimension(myArgs)){

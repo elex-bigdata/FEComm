@@ -1,4 +1,4 @@
-package com.elex.ssp;
+/*package com.elex.ssp;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -11,11 +11,11 @@ import com.maxmind.geoip2.model.CityResponse;
 public class GeoIpCity {
 
 	private static  DatabaseReader reader;
-	/**
+	*//**
 	 * @param args
 	 * @throws GeoIp2Exception 
 	 * @throws IOException 
-	 */
+	 *//*
 	public static void main(String[] args) throws IOException, GeoIp2Exception {
 
 		System.out.println(getCityName("180.251.178.183"));
@@ -49,3 +49,4 @@ public class GeoIpCity {
 	}
 
 }
+*/

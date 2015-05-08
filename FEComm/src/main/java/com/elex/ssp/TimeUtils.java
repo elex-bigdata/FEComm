@@ -124,8 +124,26 @@ public class TimeUtils {
 	}
 
     public static Date getTimeByNation(String[] args){
-        Date origDay = Timestamp.valueOf(args[0]);
-        return getTimeByNation(origDay, args[1]);
+    	Date origDay = null;
+    	String nation = null;
+    	if(args[0] == null){    		
+    		origDay = new java.util.Date();
+    	}else{
+    		try{
+    			origDay = Timestamp.valueOf(args[0]);
+    		}catch(Exception e){
+    			origDay = new java.util.Date();
+    		}
+    		
+    	}
+    	
+    	if(args[1] == null){
+    		nation="cn";
+    	}else if(args[1].equals("")){
+    		nation="cn";
+    	}
+        
+        return getTimeByNation(origDay, nation);
     }
 	
 	public static String[] getTimeDimension(String[] args){
